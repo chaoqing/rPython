@@ -53,7 +53,12 @@ if test -z "${PYTHON}"; then
   exit 1
 fi
 
-PYTHONLIBFILE=libpython`$PYTHON -c "import sys; print(sys.version[[:3]])"`.so
+PYTHONLIBFILEVERSION=`$PYTHON -c "import sys; print(sys.version[:3])"`
+if test $(uname) == Darwin ; then
+    PYTHONLIBFILE=libpython${PYTHONLIBFILEVERSION}.dylib
+else
+    PYTHONLIBFILE=libpython${PYTHONLIBFILEVERSION}.so
+fi
 
 PKG_CFLAGS="$PKG_CFLAGS -D PYTHONLIBFILE=$PYTHONLIBFILE"
 
