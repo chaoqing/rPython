@@ -4,7 +4,7 @@
 
 python.load <- function( file, get.exception = TRUE ){
     code <- readLines( file )
-    python.exec( code, get.exception )
+    python.exec( code, get.exception, string.code=TRUE )
 }
 
 

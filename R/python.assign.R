@@ -17,7 +17,7 @@ python.assign <- function(var.name, value, ...){
 
     python.command <- paste( python.command, collapse = "\n" )
 
-    python.exec( python.command )
+    python.exec( python.command, string.code=TRUE )
     invisible( NULL )
 }
 

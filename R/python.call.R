@@ -36,7 +36,7 @@ python.call <- function( py.foo, ..., simplify = TRUE, as.is = FALSE ){
 
     python.command <- paste( python.command, collapse = "\n" )
 
-    python.exec( python.command )                       # Checks for errors
+    python.exec( python.command, string.code=TRUE )                       # Checks for errors
 
     ret <- python.get( "_r_call_return" )
 

@@ -2,7 +2,8 @@
 # CGB, 20100716
 #########################################################
 
-python.exec <- function( python.code, get.exception = TRUE ){
+python.exec <- function( python.code, get.exception = TRUE, string.code = FALSE){
+    python.code <- ifelse(string.code, python.code, deparse(substitute(python.code)))
 
     if( ! get.exception ){
         exit.status <- .C( "py_exec_code", python.code, exit.status = integer(1), PACKAGE = "rPython" )$exit.status
